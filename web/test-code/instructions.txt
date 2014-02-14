@@ -1,0 +1,42 @@
+ReChannel Coding Test
+
+--------
+The task
+--------
+
+Display a list of widgets by letter.  Initially the user will be shown the
+alphabet (A-Z and Other).  When they click one of the letters they will be
+shown a list of all of the widgets which start with that letter.  If they click
+"Other" they will be shown a list of the widgets which start with anything other
+than A-Z.
+
+----------
+Your tools
+----------
+
+The source of the widgets is the SlowService class.  It's slow and unreliable
+though, so you need to work around that somehow.  It's also likely that other
+parts of the system will want to display the Widgets too, so coming up with a
+reusable way to do that would be handy.
+
+All of your new code should live in /app/Widgets.
+
+The controller code lives in /app/Widget/actions.  The controller class is there
+already, you just need to add in the code to make it do something.  The view
+templates live in /app/Widget/templates.  Looking at the WidgetController class
+should make it clear how they work.
+
+There's a WidgetTask class there already too, in case you want to run a
+scheduled task.
+
+If you put a class file into /app/Widgets/lib then you can assume that the
+framework will take care of its autoloading.
+
+You have the following classes to help you:
+
+Database
+FastCache
+Logger
+
+If you want to create any database tables, please put the CREATE statements into
+app/Widgets/data/database.sql.  They should work with MySQL 5.*

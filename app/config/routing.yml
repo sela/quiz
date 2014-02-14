@@ -1,0 +1,3 @@
+qanda:
+    resource: "@KioskQuestionBundle/Controller"
+    type:     annotation

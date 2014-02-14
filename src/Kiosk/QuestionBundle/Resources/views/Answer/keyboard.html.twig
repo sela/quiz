@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <form data-ajax="false" action="{{ path('verify_answer', {'id': id}) }}" method="post">
+        <div data-role="fieldcontain">
+            <legend>Select the correct answers and when you finish click on the Submit button:</legend>
+            <fieldset data-role="controlgroup" >
+                {% for answer in answers %}
+                    <input value="{{ answer.id }}" type="checkbox" name="checkbox-{{ loop.index }}" id="checkbox-{{ loop.index }}" class="custom" />
+                    <label for="checkbox-{{ loop.index }}">{{ answer.answerText }}</label>
+                {% endfor %}
+            </fieldset>
+            <input type="hidden" id="{{ id }}"/>
+            <button type="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false">Submit</button>
+        </div>
+    </form>
+
+{% endblock %}
