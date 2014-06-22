@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <form data-ajax="false" action="{{ path('verify_answer', {'id': id}) }}" method="post">
+        <div data-role="fieldcontain">
+
+            <button type="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false">Next</button>
+        </div>
+    </form>
+
+{% endblock %}

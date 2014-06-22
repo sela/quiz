@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+{% form_theme form _self %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+	<input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {% if loop.index0 is even %}
+        <div class="ui-grid-a">
+        {% endif %}
+            <div class="ui-block-{{ loop.index0 is even ? 'a' : 'b' }}">
+            {{ form_widget(child) }}
+            {{ form_label(child) }}
+            </div>
+        {% if loop.index0 is odd %}            
+        </div>
+        {% endif %}
+        {% if (loop.last) and (loop.index0 is even) %}
+        </div>
+        {% endif %}
+            
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+
+
+
+{% block body %}
+Question {{id+1}} (please select {{correct}} answers)
+
+
+{{ form_start(form) }}
+ 
+      {{ form_widget(form.AnswerText) }}
+
+{{ form_end(form) }}
+
+
+<!--
+    <form data-ajax="false" action="{{ path('question_show', {'id': id}) }}" method="post">
+        <div data-role="fieldcontain">
+            <legend>Select the correct answers and when you finish click on the Submit button:</legend>
+            <fieldset data-role="controlgroup" >
+                {% for answer in answers %}
+                    <input value="{{ answer.id }}" type="checkbox" name="checkbox-{{ loop.index }}" id="checkbox-{{ loop.index }}" class="custom" />
+                    <label for="checkbox-{{ loop.index }}">{{ answer.answerText }}</label>
+                {% endfor %}
+            </fieldset>
+            <input type="hidden" id="{{ id }}"/>
+            <button type="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false">Submit</button>
+        </div>
+    </form>
+-->
+{% endblock %}
