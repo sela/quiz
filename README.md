@@ -1,5 +1,5 @@
 Quiz
 ========================
 
-This is a quiz app written in Symfony 2 
+This is a quiz app written in Symfony 2.
 
